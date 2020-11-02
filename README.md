@@ -2,7 +2,7 @@
 
 ## Example:
 ```javascript
-const GPS = require('gps');
+const GPS = require('gps-nmea-reader');
 
 const gps = new GPS('COM12',9600);
 
