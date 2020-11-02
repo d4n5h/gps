@@ -1,5 +1,5 @@
 {
-  "name": "gps-reader",
+  "name": "gps-nmea-reader",
   "version": "1.0.0",
   "description": "Read parsed NMEA data from GPS modules",
   "main": "index.js",
