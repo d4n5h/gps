@@ -6,9 +6,13 @@ const nmea = require("nmea"),
 module.exports = function (comPort, baudRate) {
     if (!comPort) throw new Error('COM port is required')
     if (!baudRate) throw new Error('Baud rate port is required')
-    this.em = new events.EventEmitter();
-    this.port = new SerialPort(comPort, { baudRate: baudRate })
-    this.parser = port.pipe(new Readline())
+    try {
+        this.em = new events.EventEmitter();
+        this.port = new SerialPort(comPort, { baudRate: baudRate })
+        this.parser = this.port.pipe(new Readline())
+    } catch (error) {
+        if (error) throw new Error(error)
+    }
     this.parser.on('data', line => {
         try {
             const data = nmea.parse(line)
@@ -17,5 +21,5 @@ module.exports = function (comPort, baudRate) {
             // console.log(error)
         }
     })
-    return em;
+    return this.em;
 }
