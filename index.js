@@ -13,6 +13,15 @@ module.exports = function (comPort, baudRate) {
     } catch (error) {
         if (error) throw new Error(error)
     }
+    this.em.getDevices = async () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve(await SerialPort.list())
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
     this.parser.on('data', line => {
         try {
             const data = nmea.parse(line)
