@@ -30,5 +30,6 @@ module.exports = function (comPort, baudRate) {
             // console.log(error)
         }
     })
+    this.em.close = this.port.close
     return this.em;
 }
