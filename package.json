@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/d4n5h/gps#readme",
   "dependencies": {
-    "nmea": "^0.1.1",
+    "nmea-simple": "^3.2.0",
     "serialport": "^9.0.2"
   }
 }

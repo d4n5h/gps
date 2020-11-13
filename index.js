@@ -1,4 +1,4 @@
-const nmea = require("nmea"),
+const nmea = require("nmea-simple"),
     SerialPort = require('serialport'),
     Readline = require('@serialport/parser-readline'),
     events = require('events')
@@ -24,13 +24,13 @@ module.exports = function (comPort, baudRate) {
     }
     this.parser.on('data', line => {
         try {
-            const data = nmea.parse(line)
+            const data = nmea.parseNmeaSentence(line)
             this.em.emit('data', data)
         } catch (error) {
             // console.log(error)
         }
     })
-    
+
     this.em.close = (cb) => {
         this.port.close(cb)
     }
